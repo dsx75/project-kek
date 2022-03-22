@@ -1,54 +1,52 @@
-﻿using System;
-using Common.Interfaces;
+﻿using Common.Interfaces;
 
-namespace Common.Network
+namespace Common.Network;
+
+public class BitPacker
 {
-    public class BitPacker
+    private readonly IPacketWriter _packetWriter;
+    private byte Position = 8;
+    private byte Buffer = 0;
+
+    public BitPacker(IPacketWriter packetWriter) => _packetWriter = packetWriter;
+
+    public void Write<T>(T bit)
     {
-        private readonly IPacketWriter _packetWriter;
-        private byte Position = 8;
-        private byte Buffer = 0;
+        --Position;
 
-        public BitPacker(IPacketWriter packetWriter) => _packetWriter = packetWriter;
+        if (Convert.ToBoolean(bit))
+            Buffer |= (byte)(1 << (Position));
 
-        public void Write<T>(T bit)
+        if (Position == 0)
         {
-            --Position;
-
-            if (Convert.ToBoolean(bit))
-                Buffer |= (byte)(1 << (Position));
-
-            if (Position == 0)
-            {
-                Position = 8;
-                _packetWriter.WriteUInt8(Buffer);
-                Buffer = 0;
-            }
-        }
-
-        public void Write<T>(T bit, int count)
-        {
-            checked
-            {
-                for (int i = count - 1; i >= 0; --i)
-                    Write((T)Convert.ChangeType(((Convert.ToInt32(bit) >> i) & 1), typeof(T)));
-            }
-        }
-
-        public void WriteMask(ulong guid, params int[] offsets)
-        {
-            for (var i = 0; i < offsets.Length; i++)
-                Write((guid >> (offsets[i] * 8)) & 0xFF);
-        }
-
-        public void Flush()
-        {
-            if (Position == 8)
-                return;
-
+            Position = 8;
             _packetWriter.WriteUInt8(Buffer);
             Buffer = 0;
-            Position = 8;
         }
+    }
+
+    public void Write<T>(T bit, int count)
+    {
+        checked
+        {
+            for (int i = count - 1; i >= 0; --i)
+                Write((T)Convert.ChangeType(((Convert.ToInt32(bit) >> i) & 1), typeof(T)));
+        }
+    }
+
+    public void WriteMask(ulong guid, params int[] offsets)
+    {
+        for (var i = 0; i < offsets.Length; i++)
+            Write((guid >> (offsets[i] * 8)) & 0xFF);
+    }
+
+    public void Flush()
+    {
+        if (Position == 8)
+            return;
+
+        _packetWriter.WriteUInt8(Buffer);
+        Buffer = 0;
+        Position = 8;
     }
 }

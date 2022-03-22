@@ -1,42 +1,44 @@
-﻿namespace Common.Interfaces
+﻿namespace Common.Interfaces;
+
+public interface IPacketWriter
 {
-    public interface IPacketWriter
-    {
-        string Name { get; }
-        uint Opcode { get; }
-        uint Size { get; }
-        bool PreAuth { get; set; }
+    string Name { get; }
 
-        void WritePacketHeader(uint opcode);
+    uint Opcode { get; }
+    
+    uint Size { get; }
+    
+    bool PreAuth { get; set; }
 
-        byte[] ReadDataToSend();
+    void WritePacketHeader(uint opcode);
 
-        void WriteBool(bool data);
+    byte[] ReadDataToSend();
 
-        void WriteInt8(sbyte data);
+    void WriteBool(bool data);
 
-        void WriteInt16(short data);
+    void WriteInt8(sbyte data);
 
-        void WriteInt32(int data);
+    void WriteInt16(short data);
 
-        void WriteInt64(long data);
+    void WriteInt32(int data);
 
-        void WriteUInt8(byte data);
+    void WriteInt64(long data);
 
-        void WriteUInt16(ushort data);
+    void WriteUInt8(byte data);
 
-        void WriteUInt32(uint data);
+    void WriteUInt16(ushort data);
 
-        void WriteUInt64(ulong data);
+    void WriteUInt32(uint data);
 
-        void WriteFloat(float data);
+    void WriteUInt64(ulong data);
 
-        void WriteDouble(double data);
+    void WriteFloat(float data);
 
-        void WriteString(string data);
+    void WriteDouble(double data);
 
-        void Write(byte[] data);
+    void WriteString(string data);
 
-        void WritePackedGUID(ulong guid);
-    }
+    void Write(byte[] data);
+
+    void WritePackedGUID(ulong guid);
 }

@@ -1,17 +1,16 @@
 ﻿using System.Net.Sockets;
 
-namespace Common.Interfaces.Handlers
+namespace Common.Interfaces.Handlers;
+
+public interface IAuthHandler
 {
-    public interface IAuthHandler
-    {
-        IPacketWriter HandleAuthChallenge();
+    IPacketWriter HandleAuthChallenge();
 
-        IPacketWriter HandleRedirect();
+    IPacketWriter HandleRedirect();
 
-        void HandleRealmList(Socket socket);
+    void HandleRealmList(Socket socket);
 
-        void HandleAuthSession(ref IPacketReader packet, ref IWorldManager manager);
+    void HandleAuthSession(ref IPacketReader packet, ref IWorldManager manager);
 
-        void HandleLogoutRequest(ref IPacketReader packet, ref IWorldManager manager);
-    }
+    void HandleLogoutRequest(ref IPacketReader packet, ref IWorldManager manager);
 }

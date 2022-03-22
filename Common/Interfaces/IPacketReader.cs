@@ -1,43 +1,44 @@
-﻿namespace Common.Interfaces
+﻿namespace Common.Interfaces;
+
+public interface IPacketReader
 {
-    public interface IPacketReader
-    {
-        uint Opcode { get; }
-        uint Size { get; }
-        long Position { get; set; }
+    uint Opcode { get; }
 
-        bool ReadBool();
+    uint Size { get; }
 
-        byte ReadByte();
+    long Position { get; set; }
 
-        sbyte ReadInt8();
+    bool ReadBool();
 
-        short ReadInt16();
+    byte ReadByte();
 
-        int ReadInt32();
+    sbyte ReadInt8();
 
-        long ReadInt64();
+    short ReadInt16();
 
-        byte ReadUInt8();
+    int ReadInt32();
 
-        ushort ReadUInt16();
+    long ReadInt64();
 
-        uint ReadUInt32();
+    byte ReadUInt8();
 
-        ulong ReadUInt64();
+    ushort ReadUInt16();
 
-        float ReadFloat();
+    uint ReadUInt32();
 
-        double ReadDouble();
+    ulong ReadUInt64();
 
-        string ReadString();
+    float ReadFloat();
 
-        string ReadString(int size);
+    double ReadDouble();
 
-        byte[] ReadBytes(int count);
+    string ReadString();
 
-        byte[] ReadToEnd();
+    string ReadString(int size);
 
-        ulong ReadPackedGUID();
-    }
+    byte[] ReadBytes(int count);
+
+    byte[] ReadToEnd();
+
+    ulong ReadPackedGUID();
 }

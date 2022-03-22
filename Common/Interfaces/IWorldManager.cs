@@ -1,16 +1,17 @@
 ﻿using System.Net.Sockets;
 using Common.Structs;
 
-namespace Common.Interfaces
+namespace Common.Interfaces;
+
+public interface IWorldManager
 {
-    public interface IWorldManager
-    {
-        Account Account { get; set; }
-        Socket Socket { get; set; }
-        ISandbox SandboxHost { get; }
+    Account Account { get; set; }
 
-        void Recieve();
+    Socket Socket { get; set; }
 
-        void Send(IPacketWriter packet);
-    }
+    ISandbox SandboxHost { get; }
+
+    void Recieve();
+
+    void Send(IPacketWriter packet);
 }
