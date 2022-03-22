@@ -1,17 +1,14 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Accounts;
 
-namespace TaidanaKage.Kek.Meta.Accounts
+internal class MyAccount : IAccount
 {
-    internal class MyAccount : IAccount
+
+    internal MyAccount()
     {
 
-        internal MyAccount()
-        {
-
-        }
-
-        public string Name => throw new NotImplementedException();
-
-        public string Password => throw new NotImplementedException();
     }
+
+    public string Name => throw new NotImplementedException();
+
+    public string Password => throw new NotImplementedException();
 }

@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Rulesets;
 
-namespace TaidanaKage.Kek.Meta.Rulesets
+internal class MyRulesetManager : IRulesetManager
 {
-    internal class MyRulesetManager : IRulesetManager
+    internal MyRulesetManager()
     {
-        internal MyRulesetManager()
-        {
-        }
     }
 }

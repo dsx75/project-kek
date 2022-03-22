@@ -1,13 +1,10 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Accounts;
 
-namespace TaidanaKage.Kek.Meta.Accounts
+internal class MyAcountManager : IAccountManager
 {
-    internal class MyAcountManager : IAccountManager
+
+    internal MyAcountManager()
     {
 
-        internal MyAcountManager()
-        {
-
-        }
     }
 }

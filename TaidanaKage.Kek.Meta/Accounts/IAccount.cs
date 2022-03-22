@@ -1,17 +1,11 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta;
 
-namespace TaidanaKage.Kek.Meta
+/// <summary>
+/// Player Account
+/// </summary>
+public interface IAccount
 {
-    /// <summary>
-    /// Player Account
-    /// </summary>
-    public interface IAccount
-    {
+    string Name { get; }
 
-        string Name { get; }
-
-        string Password { get; }
-
-    }
-
+    string Password { get; }
 }

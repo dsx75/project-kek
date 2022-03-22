@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Worlds;
 
-namespace TaidanaKage.Kek.Meta.Worlds
+/// <summary>
+/// World Manager.
+/// </summary>
+public interface IWorldManager
 {
-    /// <summary>
-    /// World Manager.
-    /// </summary>
-    public interface IWorldManager
-    {
-    }
 }

@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Worlds;
 
-namespace TaidanaKage.Kek.Meta.Worlds
+internal class MyWorldManager : IWorldManager
 {
-    internal class MyWorldManager : IWorldManager
+    internal MyWorldManager()
     {
-        internal MyWorldManager()
-        {
-        }
     }
 }

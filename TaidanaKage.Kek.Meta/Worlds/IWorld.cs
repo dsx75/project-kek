@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Worlds;
 
-namespace TaidanaKage.Kek.Meta.Worlds
+/// <summary>
+/// Game World.
+/// </summary>
+public interface IWorld
 {
-    /// <summary>
-    /// Game World.
-    /// </summary>
-    public interface IWorld
-    {
-    }
 }

@@ -1,21 +1,19 @@
-﻿using System;
-using Common.Network;
+﻿using Common.Network;
 
-namespace WotLK_12340
+namespace WotLK_12340;
+
+public class PacketReader : BasePacketReader
 {
-    public class PacketReader : BasePacketReader
+    public PacketReader(byte[] data, bool parse = true) : base(data)
     {
-        public PacketReader(byte[] data, bool parse = true) : base(data)
+        if (parse)
         {
-            if (parse)
-            {
-                Decode(ref data);
-                ushort size = BitConverter.ToUInt16(data, 0);
-                Size = (ushort)((size >> 8) + ((size & 0xFF) << 8) + 2);
-                Opcode = BitConverter.ToUInt32(data, 2);
+            Decode(ref data);
+            ushort size = BitConverter.ToUInt16(data, 0);
+            Size = (ushort)((size >> 8) + ((size & 0xFF) << 8) + 2);
+            Opcode = BitConverter.ToUInt32(data, 2);
 
-                Position = 6;
-            }
+            Position = 6;
         }
     }
 }

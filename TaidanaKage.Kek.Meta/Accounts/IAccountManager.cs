@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Accounts;
 
-namespace TaidanaKage.Kek.Meta.Accounts
+/// <summary>
+/// Account Manager.
+/// </summary>
+public interface IAccountManager
 {
-    /// <summary>
-    /// Account Manager.
-    /// </summary>
-    public interface IAccountManager
-    {
-    }
 }

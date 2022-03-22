@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace TaidanaKage.Kek.Meta.Rulesets;
 
-namespace TaidanaKage.Kek.Meta.Rulesets
+/// <summary>
+/// Ruleset.
+/// </summary>
+public interface IRuleset
 {
-    /// <summary>
-    /// Ruleset.
-    /// </summary>
-    public interface IRuleset
-    {
-    }
 }
