@@ -1,4 +1,5 @@
-﻿using TaidanaKage.Kek.Common;
+﻿using Microsoft.Data.Sqlite;
+using TaidanaKage.Kek.Common;
 using TaidanaKage.Kek.Meta.Accounts;
 using TaidanaKage.Kek.Meta.Clients;
 using TaidanaKage.Kek.Meta.Rulesets;
@@ -21,14 +22,14 @@ internal class MyMeta : IMeta
 
         if (!Directory.Exists(_folder))
         {
-            // TODO create the directory
+            Directory.CreateDirectory(_folder);
         }
 
         _databaseFile = Path.Combine(_folder, Constants.MetaDatabaseFileName);
 
         if (!File.Exists(_databaseFile))
         {
-
+            new MetaDatabaseGenerator(_databaseFile).Run();
         }
 
         _accountManager = new MyAcountManager();

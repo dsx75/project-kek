@@ -87,7 +87,7 @@ public static class Program
         // Let's delete Meta Folder to enforce Meta Database re-creation every times
         if (Directory.Exists(Utils.MetaFolder))
         {
-            Directory.Delete(Utils.MetaFolder);
+            Directory.Delete(Utils.MetaFolder, true);
         }
 
         IMeta meta = MetaFactory.Meta;
