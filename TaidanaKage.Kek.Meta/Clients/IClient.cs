@@ -90,6 +90,16 @@ public interface IClient
     /// </summary>
     int VersionPrivate { get; }
 
+
+    /// <summary>
+    /// Full version of this Client.
+    /// <br/>
+    /// <example>
+    /// For example: 1.12.1.5875
+    /// </example>
+    /// </summary>
+    string Version { get; }
+
     /// <summary>
     /// World Version assigned to this Client.
     /// </summary>

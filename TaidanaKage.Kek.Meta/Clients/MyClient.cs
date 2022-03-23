@@ -15,6 +15,7 @@ internal class MyClient : IClient
     private readonly int _versionMinor;
     private readonly int _versionBuild;
     private readonly int _versionPrivate;
+    private readonly string _version;
     private readonly WorldVersion _worldVersion;
     private readonly bool _is64Bit;
 
@@ -72,6 +73,7 @@ internal class MyClient : IClient
         _versionMinor = versionMinor;
         _versionBuild = versionBuild;
         _versionPrivate = versionPrivate;
+        _version = _versionMajor + "." + _versionMinor + "." + _versionBuild + " (" + _versionPrivate + ")";
         _worldVersion = worldVersion;
         _is64Bit = is64Bit;
     }
@@ -95,6 +97,8 @@ internal class MyClient : IClient
     public WorldVersion WorldVersion => _worldVersion;
 
     public bool Is64Bit => _is64Bit;
+
+    public string Version => _version;
 
     public void Configure()
     {

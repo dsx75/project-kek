@@ -25,10 +25,12 @@ public interface IClientManager
 
     /// <summary>
     /// Gets the Client with the specified ID.
+    /// <br/>
+    /// If no Client was found, returns <c>null</c>.
     /// </summary>
     /// <param name="id">ID of the Client. Must already exist in the Meta Database.</param>
-    /// <returns>Client.</returns>
-    public IClient GetClient(int id);
+    /// <returns>Client or <c>null</c>.</returns>
+    public IClient? GetClient(int id);
 
     /// <summary>
     /// ID of the Client selected by Player, or <c>0</c> if Player hasn't selected one yet.

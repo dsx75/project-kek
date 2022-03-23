@@ -27,17 +27,9 @@ public static class Program
         IMeta meta = MetaFactory.Meta;
 
         // As the first thing in the Launcher player should select which client he wants to play
-        meta.ClientManager.SelectedClientId = 3;
+        IClient client = meta.ClientManager.GetClient(3);
+        logger.Info("Selected client: " + client.Version);
 
-        if (meta.ClientManager.SelectedClient == null)
-        {
-            logger.Error("No selected client.");
-            return;
-        }
-        else
-        {
-            logger.Info("Selected client: " + meta.ClientManager.SelectedClient.ExeFile);
-        }
 
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentCulture = CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
