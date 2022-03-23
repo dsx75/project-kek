@@ -21,14 +21,4 @@ public static class Constants
     /// The name of the file containing Meta database.
     /// </summary>
     public const string MetaDatabaseFileName = "meta.db";
-
-    /// <summary>
-    /// File name of the 32-bit WoW client executable.
-    /// </summary>
-    public const string WoWClient32ExeFileName = "WoW.exe";
-
-    /// <summary>
-    /// File name of the 64-bit WoW client executable.
-    /// </summary>
-    public const string WoWClient64ExeFileName = "WoW-64.exe";
 }

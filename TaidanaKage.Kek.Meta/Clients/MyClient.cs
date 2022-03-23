@@ -1,5 +1,4 @@
 ﻿using NLog;
-using System.Diagnostics;
 using TaidanaKage.Kek.Common;
 
 namespace TaidanaKage.Kek.Meta;
@@ -8,56 +7,104 @@ internal class MyClient : IClient
 {
     private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
+    private readonly int _id;
     private readonly string _folder;
+    private readonly string _exeFileName;
     private readonly string _exeFile;
+    private readonly int _versionMajor;
+    private readonly int _versionMinor;
+    private readonly int _versionBuild;
+    private readonly int _versionPrivate;
+    private readonly WorldVersion _worldVersion;
+    private readonly bool _is64Bit;
 
-    internal MyClient(string folder)
+    internal MyClient(int id, string folder, string exeFileName, int versionMajor, int versionMinor, int versionBuild, int versionPrivate, WorldVersion worldVersion, bool is64Bit)
     {
+        // Are these checks here necessary? Eh, whatever. Better be safe than sorry.
+        if (id < 1)
+        {
+            ArgumentOutOfRangeException ex = new(nameof(id), id, "Invalid Client ID.");
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (string.IsNullOrWhiteSpace(folder))
+        {
+            ArgumentException ex = new("Client's installation path cannot be empty.", nameof(folder));
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (string.IsNullOrWhiteSpace(exeFileName))
+        {
+            ArgumentException ex = new("Cllient's exe file name cannot be empty.", nameof(exeFileName));
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (versionMajor < 0)
+        {
+            ArgumentOutOfRangeException ex = new(nameof(versionMajor), versionMajor, "Invalid major part of the Client's version.");
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (versionMinor < 0)
+        {
+            ArgumentOutOfRangeException ex = new(nameof(versionMinor), versionMinor, "Invalid minor part of the Client's version.");
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (versionBuild < 0)
+        {
+            ArgumentOutOfRangeException ex = new(nameof(versionBuild), versionBuild, "Invalid build part of the Client's version.");
+            logger.Error(ex);
+            throw (ex);
+        }
+        if (versionPrivate < 0)
+        {
+            ArgumentOutOfRangeException ex = new(nameof(versionPrivate), versionPrivate, "Invalid private part of the Client's version.");
+            logger.Error(ex);
+            throw (ex);
+        }
+
+        _id = id;
         _folder = folder;
-
-        if (!Directory.Exists(_folder))
-        {
-            Exception ex = new DirectoryNotFoundException("Client folder doesn't exist: " + _folder);
-            logger.Error(ex);
-            throw ex;
-        }
-
-        string exeFile32 = Path.Combine(_folder, Constants.WoWClient32ExeFileName);
-        string exeFile64 = Path.Combine(_folder, Constants.WoWClient64ExeFileName);
-
-        // TODO this should be configurable
-        // 64-bit version is preferred
-        if (File.Exists(exeFile64))
-        {
-            _exeFile = exeFile64;
-        }
-        else if (File.Exists(exeFile32))
-        {
-            _exeFile = exeFile32;
-        }
-        else
-        {
-            Exception ex = new FileNotFoundException("Client executable not found: " + exeFile32 + " or " + exeFile64);
-            logger.Error(ex);
-            throw ex;
-        }
+        _exeFileName = exeFileName;
+        _exeFile = Path.Combine(folder, exeFileName);
+        _versionMajor = versionMajor;
+        _versionMinor = versionMinor;
+        _versionBuild = versionBuild;
+        _versionPrivate = versionPrivate;
+        _worldVersion = worldVersion;
+        _is64Bit = is64Bit;
     }
+
+    public int Id => _id;
 
     public string Folder => _folder;
 
+    public string ExeFileName => _exeFileName;
+
     public string ExeFile => _exeFile;
 
-    public FileVersionInfo ClientVersion => throw new NotImplementedException();
+    public int VersionMajor => _versionMajor;
 
-    public WorldVersion WorldVersion => throw new NotImplementedException();
+    public int VersionMinor => _versionMinor;
+
+    public int VersionBuild => _versionBuild;
+
+    public int VersionPrivate => _versionPrivate;
+
+    public WorldVersion WorldVersion => _worldVersion;
+
+    public bool Is64Bit => _is64Bit;
 
     public void Configure()
     {
+        // TODO
         throw new NotImplementedException();
     }
 
     public void Run()
     {
+        // TODO
         throw new NotImplementedException();
     }
 }

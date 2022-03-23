@@ -47,6 +47,7 @@ internal class MetaDatabaseGenerator
         InsertDefaultRuleset();
 
         _conn.Close();
+        _conn.Dispose();
     }
 
     private void Execute(string sql)
@@ -137,8 +138,14 @@ internal class MetaDatabaseGenerator
         string sql = @"CREATE TABLE `clients`(
             `id` INTEGER PRIMARY KEY, 
             `folder` TEXT NOT NULL,
+            `exe_file_name` TEXT NOT NULL,
+            `version_major` INTEGER NOT NULL,
+            `version_minor` INTEGER NOT NULL,
+            `version_build` INTEGER NOT NULL,
+            `version_private` INTEGER NOT NULL,
             `id_world_version` INTEGER NOT NULL,
-            UNIQUE(`folder`),
+            `is_64_bit` INTEGER NOT NULL,
+            UNIQUE(`folder`, `exe_file_name`),
             FOREIGN KEY(`id_world_version`) REFERENCES `world_versions`(`id`)
             );";
         Execute(sql);

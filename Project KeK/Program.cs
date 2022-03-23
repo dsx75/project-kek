@@ -21,20 +21,22 @@ public static class Program
     {
         Console.WriteLine("START");
 
+        // Only during testing (create a new meta database for each run)
         InitializeMeta();
 
         IMeta meta = MetaFactory.Meta;
 
-        Console.WriteLine(meta.DatabaseFile);
+        // As the first thing in the Launcher player should select which client he wants to play
+        meta.ClientManager.SelectedClientId = 3;
 
-        if (meta.ClientManager.Current == null)
+        if (meta.ClientManager.SelectedClient == null)
         {
             logger.Error("No selected client.");
             return;
         }
         else
         {
-            //logger.Info("Selected client: " + meta.ClientManager.Current.ClientVersion.ToString());
+            logger.Info("Selected client: " + meta.ClientManager.SelectedClient.ExeFile);
         }
 
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentCulture = CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
@@ -92,10 +94,10 @@ public static class Program
 
         IMeta meta = MetaFactory.Meta;
 
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W1");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W2");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W3");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W4");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W5");
+        meta.ClientManager.AddClient(@"F:\WoW\Clients\W1\WoW.exe");
+        meta.ClientManager.AddClient(@"F:\WoW\Clients\W2\WoW.exe");
+        meta.ClientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
+        meta.ClientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
+        meta.ClientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
     }
 }

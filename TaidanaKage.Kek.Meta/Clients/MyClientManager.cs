@@ -1,26 +1,49 @@
-﻿namespace TaidanaKage.Kek.Meta.Clients;
+﻿using NLog;
+
+namespace TaidanaKage.Kek.Meta.Clients;
 
 internal class MyClientManager : IClientManager
 {
-    private IClient? _current;
+    private readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+    private int _selectedClientId;
+    private IClient? _selectedClient;
 
     internal MyClientManager()
     {
+        _selectedClientId = 0;
+        _selectedClient = null;
     }
 
-    public IClient AddClient(string folder)
+    public IClient AddClient(string exeFile)
     {
-        // TODO implement
+        // Since there's a lot of code involved, a separate class was created.
+        return new ClientGenerator(exeFile).Run();
+    }
+
+    public IClient GetClient(int id)
+    {
         return null;
     }
 
-    public IClient? Current
+    public int SelectedClientId
     {
         get
         {
-            // TODO hardcoded value
-            _current = new MyClient(@"F:\WoW\Clients\W3");
-            return _current;
+            return _selectedClientId;
+        }
+        set
+        {
+            _selectedClientId = value;
+            _selectedClient = null;
+        }
+    }
+
+    public IClient? SelectedClient
+    {
+        get
+        {
+            return _selectedClient;
         }
     }
 }
