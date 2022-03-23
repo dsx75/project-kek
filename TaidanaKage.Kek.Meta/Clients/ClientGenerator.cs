@@ -58,28 +58,7 @@ internal class ClientGenerator
         _versionBuild = fileVersionInfo.FileBuildPart;
         _versionPrivate = fileVersionInfo.FilePrivatePart;
 
-        switch (_versionMajor)
-        {
-            case 1:
-                _worldVersion = WorldVersion.W1;
-                break;
-            case 2:
-                _worldVersion = WorldVersion.W2;
-                break;
-            case 3:
-                _worldVersion = WorldVersion.W3;
-                break;
-            case 4:
-                _worldVersion = WorldVersion.W4;
-                break;
-            case 5:
-                _worldVersion = WorldVersion.W5;
-                break;
-            default:
-                ArgumentOutOfRangeException ex = new(nameof(_versionMajor), _versionMajor, "Unable to assing a World Version for this Client. Unsupported Client version?");
-                logger.Error(ex);
-                throw (ex);
-        }
+        _worldVersion = Utils.GetWorldVersion(_versionMajor);
 
         // TODO
         _is64Bit = false;

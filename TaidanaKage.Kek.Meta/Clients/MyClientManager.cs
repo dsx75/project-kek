@@ -45,31 +45,8 @@ internal class MyClientManager : IClientManager
                 int versionBuild = reader.GetInt32(reader.GetOrdinal("version_build"));
                 int versionPrivate = reader.GetInt32(reader.GetOrdinal("version_private"));
 
-                // TODO duplicate code
                 int idWorldVersion = reader.GetInt32(reader.GetOrdinal("id_world_version"));
-                WorldVersion worldVersion;
-                switch (idWorldVersion)
-                {
-                    case 1:
-                        worldVersion = WorldVersion.W1;
-                        break;
-                    case 2:
-                        worldVersion = WorldVersion.W2;
-                        break;
-                    case 3:
-                        worldVersion = WorldVersion.W3;
-                        break;
-                    case 4:
-                        worldVersion = WorldVersion.W4;
-                        break;
-                    case 5:
-                        worldVersion = WorldVersion.W5;
-                        break;
-                    default:
-                        ArgumentOutOfRangeException ex = new(nameof(idWorldVersion), idWorldVersion, "Unable to assing a World Version for this Client. Unsupported Client version?");
-                        logger.Error(ex);
-                        throw (ex);
-                }
+                WorldVersion worldVersion = Utils.GetWorldVersion(idWorldVersion);
 
                 int i64 = reader.GetInt32(reader.GetOrdinal("is_64_bit"));
                 bool is64Bit = (i64 == 1);
