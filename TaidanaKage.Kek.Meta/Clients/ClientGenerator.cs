@@ -89,18 +89,7 @@ internal class ClientGenerator
         cmd.ExecuteNonQuery();
 
         // Let's find the ID of newly added Client
-        // TODO Move this into a separate helper method.
-        cmd.CommandText = @"SELECT last_insert_rowid()";
-        var result = cmd.ExecuteScalar();
-        if (result == null)
-        {
-            // Something went wrong
-            Exception ex = new("Unable to determine ID of the newly added Client.");
-            logger.Error(ex);
-            throw ex;
-        }
-        Int64 id64 = (Int64)result;
-        int id = Convert.ToInt32(id64);
+        int id = MyMeta.GetLastInsertRowId();
 
         return new MyClient(id, _folder, _exeFileName, _versionMajor, _versionMinor, _versionBuild, _versionPrivate, _worldVersion, _is64Bit);
     }

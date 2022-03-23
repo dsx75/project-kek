@@ -90,4 +90,26 @@ internal class MyMeta : IMeta
             return _conn;
         }
     }
+
+    /// <summary>
+    /// Gets the ID of the record created by the last INSERT command.
+    /// </summary>
+    /// <returns>ID</returns>
+    internal static int GetLastInsertRowId()
+    {
+        SqliteCommand cmd = new();
+        cmd.Connection = Conn;
+        cmd.CommandText = @"SELECT last_insert_rowid()";
+        var result = cmd.ExecuteScalar();
+        if (result == null)
+        {
+            // Something went wrong
+            Exception ex = new("Unable to determine ID of the newly added record.");
+            logger.Error(ex);
+            throw ex;
+        }
+        Int64 id64 = (Int64)result;
+        int id = Convert.ToInt32(id64);
+        return id;
+    }
 }
