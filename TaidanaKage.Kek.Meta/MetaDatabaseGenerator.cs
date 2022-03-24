@@ -46,6 +46,10 @@ internal class MetaDatabaseGenerator
         CreateTableRulesets();
         InsertDefaultRuleset();
 
+        // Selected
+        CreateTableSelected();
+        InsertDefaultSelected();
+
         _conn.Close();
         _conn.Dispose();
     }
@@ -169,6 +173,29 @@ internal class MetaDatabaseGenerator
         // TODO hardcoded values
         command.Parameters.AddWithValue("$id", 1);
         command.Parameters.AddWithValue("$name", "Default");
+        command.ExecuteNonQuery();
+    }
+
+    private void CreateTableSelected()
+    {
+        string sql = @"CREATE TABLE `selected`(
+            `id` INTEGER PRIMARY KEY, 
+            `id_client` INTEGER, 
+            `id_world_version` INTEGER, 
+            `id_ruleset` INTEGER, 
+            `id_world` INTEGER, 
+            FOREIGN KEY(`id_client`) REFERENCES `clients`(`id`),
+            FOREIGN KEY(`id_world_version`) REFERENCES `world_versions`(`id`),
+            FOREIGN KEY(`id_ruleset`) REFERENCES `rulesets`(`id`),
+            FOREIGN KEY(`id_world`) REFERENCES `worlds`(`id`)
+            );";
+        Execute(sql);
+    }
+    private void InsertDefaultSelected()
+    {
+        var command = _conn.CreateCommand();
+        command.CommandText = @"INSERT INTO `selected`(`id`) VALUES ($id)";
+        command.Parameters.AddWithValue("$id", 1);
         command.ExecuteNonQuery();
     }
 }

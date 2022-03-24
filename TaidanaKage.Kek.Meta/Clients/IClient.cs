@@ -1,6 +1,6 @@
 ﻿using TaidanaKage.Kek.Common;
 
-namespace TaidanaKage.Kek.Meta;
+namespace TaidanaKage.Kek.Meta.Clients;
 
 /// <summary>
 /// Client.

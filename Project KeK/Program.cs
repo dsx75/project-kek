@@ -1,11 +1,11 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using Common.Constants;
 using Common.Cryptography;
 using Common.Interfaces;
 using NLog;
 using TaidanaKage.Kek.Common;
 using TaidanaKage.Kek.Meta;
+using TaidanaKage.Kek.Meta.Clients;
 using WorldServer.Network;
 using WorldServer.Packets;
 

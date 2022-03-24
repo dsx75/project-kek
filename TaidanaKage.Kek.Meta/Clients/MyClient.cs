@@ -1,7 +1,7 @@
 ﻿using NLog;
 using TaidanaKage.Kek.Common;
 
-namespace TaidanaKage.Kek.Meta;
+namespace TaidanaKage.Kek.Meta.Clients;
 
 internal class MyClient : IClient
 {
