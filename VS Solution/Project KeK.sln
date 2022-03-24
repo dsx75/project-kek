@@ -13,15 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W2", "W2\W2.csproj", "{8FEC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W3", "W3\W3.csproj", "{A5DBD0DD-BD19-4F59-935B-B5AB9A768B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W4", "W4\W4.csproj", "{B4FE884A-07CA-4F4E-B373-8E85EE46ECAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W4", "W4\W4.csproj", "{B4FE884A-07CA-4F4E-B373-8E85EE46ECAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W5", "W5\W5.csproj", "{27BDF4FE-7DAC-44B0-A792-38626909777D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "W5", "W5\W5.csproj", "{27BDF4FE-7DAC-44B0-A792-38626909777D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidanaKage.Kek.Meta", "TaidanaKage.Kek.Meta\TaidanaKage.Kek.Meta.csproj", "{92449547-9A5A-411D-98FF-1316E9F5B237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaidanaKage.Kek.Meta", "TaidanaKage.Kek.Meta\TaidanaKage.Kek.Meta.csproj", "{92449547-9A5A-411D-98FF-1316E9F5B237}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidanaKage.Kek.Common", "TaidanaKage.Kek.Common\TaidanaKage.Kek.Common.csproj", "{01B5672C-9395-4182-A1F6-A5ECEADA11AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaidanaKage.Kek.Common", "TaidanaKage.Kek.Common\TaidanaKage.Kek.Common.csproj", "{01B5672C-9395-4182-A1F6-A5ECEADA11AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher", "Launcher\Launcher.csproj", "{125D25C1-A262-40D5-BCFF-B4C3F342F0B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher", "Launcher\Launcher.csproj", "{125D25C1-A262-40D5-BCFF-B4C3F342F0B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
