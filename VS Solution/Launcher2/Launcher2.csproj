@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TaidanaKage.Kek.Meta\TaidanaKage.Kek.Meta.csproj" />
     <ProjectReference Include="..\TaidanaKage.Wow.Server.Meta\TaidanaKage.Wow.Server.Meta.csproj" />
+    <ProjectReference Include="..\TaidanaKage.Wow.Server.World\TaidanaKage.Wow.Server.World.csproj" />
   </ItemGroup>
 
   <ItemGroup>

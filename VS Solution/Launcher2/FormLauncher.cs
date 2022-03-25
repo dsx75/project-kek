@@ -1,4 +1,5 @@
 using TaidanaKage.Wow.Server.Meta.W1;
+using TaidanaKage.Wow.Server.World.W1;
 
 namespace TaidanaKage.Kek;
 
@@ -16,6 +17,7 @@ public partial class FormLauncher : Form
         buttonPlay.Enabled = false;
         buttonStop.Enabled = true;
         WowMetaServer.Start(AddToLog);
+        WowWorldServer.Start(AddToLog);
     }
 
     private void ButtonStop_Click(object sender, EventArgs e)
@@ -23,6 +25,7 @@ public partial class FormLauncher : Form
         buttonStop.Enabled = false;
         buttonPlay.Enabled = true;
         WowMetaServer.Stop(AddToLog);
+        WowWorldServer.Stop(AddToLog);
     }
 
     private void buttonAbout_Click(object sender, EventArgs e)
