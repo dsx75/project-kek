@@ -1,7 +1,11 @@
+using NLog;
+
 namespace TaidanaKage.Kek;
 
 public static class Program
 {
+    private static readonly Logger logger = LogManager.GetCurrentClassLogger();
+
     /// <summary>
     ///  KeK Launcher.
     ///  <br/>

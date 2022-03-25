@@ -21,4 +21,8 @@
     <WarningLevel>5</WarningLevel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.7.14" />
+  </ItemGroup>
+
 </Project>

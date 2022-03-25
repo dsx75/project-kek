@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaidanaKage.Kek.Common", "T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher", "Launcher\Launcher.csproj", "{125D25C1-A262-40D5-BCFF-B4C3F342F0B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launcher2", "Launcher2\Launcher2.csproj", "{C8062C2F-4FCA-4448-B117-97048179B8BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher2", "Launcher2\Launcher2.csproj", "{C8062C2F-4FCA-4448-B117-97048179B8BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidanaKage.Wow.Server.Meta", "TaidanaKage.Wow.Server.Meta\TaidanaKage.Wow.Server.Meta.csproj", "{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{C8062C2F-4FCA-4448-B117-97048179B8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8062C2F-4FCA-4448-B117-97048179B8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8062C2F-4FCA-4448-B117-97048179B8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

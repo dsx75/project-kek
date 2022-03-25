@@ -14,7 +14,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog" Version="4.7.14" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TaidanaKage.Kek.Meta\TaidanaKage.Kek.Meta.csproj" />
+    <ProjectReference Include="..\TaidanaKage.Wow.Server.Meta\TaidanaKage.Wow.Server.Meta.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="nlog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
