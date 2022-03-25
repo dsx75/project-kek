@@ -25,40 +25,56 @@ public static class WowMetaServer
 
     private static SimpleTcpServer? _server;
 
-    public static void Start()
+    // Loose coupling. We can call this library from a console application, Windows Forms application, etc.
+    public delegate void DisplayInfo(string message);
+
+    public static void Start(DisplayInfo displayInfo)
     {
         // Listening IP and Port
         _server = new SimpleTcpServer("127.0.0.1", 3724);
 
         // Server configuration
-        _server.Events.ClientConnected += ClientConnected;
-        _server.Events.ClientDisconnected += ClientDisconnected;
-        _server.Events.DataReceived += DataReceived;
+        _server.Events.ClientConnected += (sender, e) => ClientConnected(sender, e, displayInfo);
+        _server.Events.ClientDisconnected += (sender, e) => ClientDisconnected(sender, e, displayInfo);
+        _server.Events.DataReceived += (sender, e) => DataReceived(sender, e, displayInfo);
+
+        string message = "WoW Meta Server started.";
+        logger.Info(message);
+        displayInfo(message);
 
         _server.StartAsync();
     }
 
-    public static void Stop()
+    public static void Stop(DisplayInfo displayInfo)
     {
         if (_server != null)
         {
             _server.Stop();
             _server.Dispose();
+            string message = "WoW Meta Server stopped.";
+            logger.Info(message);
+            displayInfo(message);
         }
     }
 
-    static void ClientConnected(object sender, ConnectionEventArgs e)
+    static void ClientConnected(object sender, ConnectionEventArgs e, DisplayInfo displayInfo)
     {
-        logger.Info("[" + e.IpPort + "] client connected");
+        string message = "[" + e.IpPort + "] client connected";
+        logger.Info(message);
+        displayInfo(message);
     }
 
-    static void ClientDisconnected(object sender, ConnectionEventArgs e)
+    static void ClientDisconnected(object sender, ConnectionEventArgs e, DisplayInfo displayInfo)
     {
-        logger.Info("[" + e.IpPort + "] client disconnected: " + e.Reason.ToString());
+        string message = "[" + e.IpPort + "] client disconnected: " + e.Reason.ToString();
+        logger.Info(message);
+        displayInfo(message);
     }
 
-    static void DataReceived(object sender, DataReceivedEventArgs e)
+    static void DataReceived(object sender, DataReceivedEventArgs e, DisplayInfo displayInfo)
     {
-        logger.Info("[" + e.IpPort + "]: " + Encoding.UTF8.GetString(e.Data));
+        string message = "[" + e.IpPort + "]: " + Encoding.UTF8.GetString(e.Data);
+        logger.Info(message);
+        displayInfo(message);
     }
 }

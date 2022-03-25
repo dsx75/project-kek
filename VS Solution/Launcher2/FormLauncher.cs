@@ -15,14 +15,14 @@ public partial class FormLauncher : Form
     {
         buttonPlay.Enabled = false;
         buttonStop.Enabled = true;
-        WowMetaServer.Start();
+        WowMetaServer.Start(AddToLog);
     }
 
     private void ButtonStop_Click(object sender, EventArgs e)
     {
         buttonStop.Enabled = false;
         buttonPlay.Enabled = true;
-        WowMetaServer.Stop();
+        WowMetaServer.Stop(AddToLog);
     }
 
     private void buttonAbout_Click(object sender, EventArgs e)
@@ -68,5 +68,19 @@ public partial class FormLauncher : Form
     private void buttonManageWorlds_Click(object sender, EventArgs e)
     {
 
+    }
+
+    private void textBoxLog_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    /// <summary>
+    /// This method (a delegate) provides a way for the WoW Meta Server to write directly into the Launcher's Log.
+    /// </summary>
+    /// <param name="message"></param>
+    private void AddToLog(string message)
+    {
+        textBoxLog.Text += message + Environment.NewLine;
     }
 }
