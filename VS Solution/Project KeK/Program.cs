@@ -27,7 +27,12 @@ public static class Program
         IMeta meta = MetaFactory.Meta;
 
         // As the first thing in the Launcher player should select which client he wants to play
-        IClient client = meta.ClientManager.GetClient(3);
+        IClient? client = meta.ClientManager.GetClient(3);
+        if (client == null)
+        {
+            logger.Error("Client was not found.");
+            return;
+        }
         logger.Info("Selected client: " + client.Version);
 
 
