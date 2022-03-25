@@ -7,18 +7,22 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyName>TaidanaKage.Wow.Server.Meta</AssemblyName>
-    <RootNamespace>TaidanaKage.Wow.Server.Meta</RootNamespace>
+    <AssemblyName>TaidanaKage.Wow.Packets</AssemblyName>
+    <RootNamespace>TaidanaKage.Wow.Packets</RootNamespace>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NLog" Version="4.7.14" />
-    <PackageReference Include="SuperSimpleTcp" Version="2.6.0.6" />
+    <Folder Include="Common\" />
+    <Folder Include="W5\" />
+    <Folder Include="W4\" />
+    <Folder Include="W3\" />
+    <Folder Include="W2\" />
+    <Folder Include="W1\World\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaidanaKage.Wow.Packets\TaidanaKage.Wow.Packets.csproj" />
+    <PackageReference Include="NLog" Version="4.7.14" />
   </ItemGroup>
 
 </Project>

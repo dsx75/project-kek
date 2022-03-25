@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Launcher2", "Launcher2\Laun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidanaKage.Wow.Server.Meta", "TaidanaKage.Wow.Server.Meta\TaidanaKage.Wow.Server.Meta.csproj", "{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaidanaKage.Wow.Packets", "TaidanaKage.Wow.Packets\TaidanaKage.Wow.Packets.csproj", "{AB113E15-4EEE-40C6-A166-29C9D0FF69CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37AC7867-D9F2-4E75-8A6B-C0FF9BD06B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB113E15-4EEE-40C6-A166-29C9D0FF69CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB113E15-4EEE-40C6-A166-29C9D0FF69CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB113E15-4EEE-40C6-A166-29C9D0FF69CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB113E15-4EEE-40C6-A166-29C9D0FF69CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

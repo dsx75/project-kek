@@ -1,6 +1,7 @@
 ﻿using NLog;
 using SuperSimpleTcp;
 using System.Text;
+using TaidanaKage.WoW.Packets.W1.Login;
 
 namespace TaidanaKage.Wow.Server.Meta.W1;
 
@@ -38,11 +39,13 @@ public static class WowMetaServer
         _server.Events.ClientDisconnected += (sender, e) => ClientDisconnected(sender, e, displayInfo);
         _server.Events.DataReceived += (sender, e) => DataReceived(sender, e, displayInfo);
 
+        _server.StartAsync();
+
+        PacketManager.Start();
+
         string message = "WoW Meta Server started.";
         logger.Info(message);
         displayInfo(message);
-
-        _server.StartAsync();
     }
 
     public static void Stop(DisplayInfo displayInfo)
@@ -73,8 +76,11 @@ public static class WowMetaServer
 
     static void DataReceived(object sender, DataReceivedEventArgs e, DisplayInfo displayInfo)
     {
-        string message = "[" + e.IpPort + "]: " + Encoding.UTF8.GetString(e.Data);
-        logger.Info(message);
+        IIncomingPacket packet = PacketManager.PacketReader.Parse(e.Data);
+
+        string message = "[" + e.IpPort + "]: Data received, length " + packet.Length;
         displayInfo(message);
+        logger.Info(message);
+        logger.Debug(Encoding.UTF8.GetString(e.Data));
     }
 }
