@@ -18,7 +18,7 @@ public static class Worldports
     {
         var properties = typeof(Location).GetProperties(BindingFlags.Public | BindingFlags.Instance);
         // TODO hardcoded data
-        var resource = File.ReadAllText(@"_data\Worldports.csv");
+        var resource = File.ReadAllText(@"Rulesets\W3\Default\Worldports.csv");
         var entries = resource.Split(new[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
         int j;

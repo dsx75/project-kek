@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\TaidanaKage.Kek.Common\TaidanaKage.Kek.Common.csproj" />
     <ProjectReference Include="..\TaidanaKage.Kek.Meta\TaidanaKage.Kek.Meta.csproj" />
     <ProjectReference Include="..\W1\W1.csproj" />
     <ProjectReference Include="..\W2\W2.csproj" />

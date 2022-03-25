@@ -20,7 +20,7 @@ public static class AreaTriggers
     {
         var properties = typeof(Location).GetProperties(BindingFlags.Public | BindingFlags.Instance);
         // TODO hardcoded data
-        var resource = File.ReadAllText(@"_data\AreaTriggers.csv");
+        var resource = File.ReadAllText(@"Rulesets\W3\Default\AreaTriggers.csv");
         var entries = resource.Split(new[] { "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
         int j;
