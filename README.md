@@ -48,5 +48,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 [2]: https://www.sqlite.org/ "The best thing ever invented"
 [3]: https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/ "A lightweight ADO.NET provider for SQLite"
 [4]: https://nlog-project.org/ "A flexible and free logging platform"
-[5]: https://github.com/bcgit/bc-csharp "The Bouncy Castle crypto package for C#"
-[6]: https://github.com/jchristn/SuperSimpleTcp "Simple wrapper for TCP client and server in C# with SSL support"
+[5]: https://github.com/jchristn/SuperSimpleTcp "Simple wrapper for TCP client and server in C# with SSL support"
+[6]: https://github.com/bcgit/bc-csharp "The Bouncy Castle crypto package for C#"
