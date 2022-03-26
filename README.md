@@ -2,16 +2,14 @@
 
 Project KeK is an experimental tool for learning and testing purposes.
 
-
-Limitations:
+### Limitations
 
 - no online functionality
 - only a single user at a time
-- Windows only (.NET 6.0)
+- Windows only
 - English language only
 
-
-Supported clients:
+### Supported clients
 
 1. Vanilla
 2. TBC
