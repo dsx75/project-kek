@@ -13,4 +13,4 @@
 [2]: https://www.getmangos.eu/ "A full-featured, free, Massive Network Game Object Server Suite"
 [3]: https://github.com/MangosServer/MangosSharp "A prototype C# version of mangosVB"
 [4]: https://github.com/barncastle "barncastle on GitHub"
-[5]: https://github.com/barncastle/AIO-Sandbox "An "All In One" sandbox server supporting pre-Cata builds of WoW"
+[5]: https://github.com/barncastle/AIO-Sandbox "An \"All In One\" sandbox server supporting pre-Cata builds of WoW"
