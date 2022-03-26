@@ -14,6 +14,7 @@ public static class Program
     [STAThread]
     public static void Main()
     {
+        logger.Info("----- Launcher started -----");
         ApplicationConfiguration.Initialize();
         Application.Run(new FormLauncher());
     }

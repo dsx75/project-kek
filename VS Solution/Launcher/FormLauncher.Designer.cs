@@ -73,7 +73,7 @@ partial class FormLauncher
             this.groupBoxClients.Location = new System.Drawing.Point(20, 120);
             this.groupBoxClients.Name = "groupBoxClients";
             this.groupBoxClients.Size = new System.Drawing.Size(530, 80);
-            this.groupBoxClients.TabIndex = 2;
+            this.groupBoxClients.TabIndex = 3;
             this.groupBoxClients.TabStop = false;
             this.groupBoxClients.Text = "1. Select WoW client";
             // 
@@ -104,7 +104,7 @@ partial class FormLauncher
             this.groupBoxRulesets.Location = new System.Drawing.Point(20, 220);
             this.groupBoxRulesets.Name = "groupBoxRulesets";
             this.groupBoxRulesets.Size = new System.Drawing.Size(530, 70);
-            this.groupBoxRulesets.TabIndex = 3;
+            this.groupBoxRulesets.TabIndex = 4;
             this.groupBoxRulesets.TabStop = false;
             this.groupBoxRulesets.Text = "2. Select ruleset";
             // 
@@ -135,7 +135,7 @@ partial class FormLauncher
             this.groupBoxWorlds.Location = new System.Drawing.Point(20, 320);
             this.groupBoxWorlds.Name = "groupBoxWorlds";
             this.groupBoxWorlds.Size = new System.Drawing.Size(530, 70);
-            this.groupBoxWorlds.TabIndex = 4;
+            this.groupBoxWorlds.TabIndex = 5;
             this.groupBoxWorlds.TabStop = false;
             this.groupBoxWorlds.Text = "3. Select world";
             // 
@@ -166,7 +166,7 @@ partial class FormLauncher
             this.groupBoxPlay.Location = new System.Drawing.Point(20, 420);
             this.groupBoxPlay.Name = "groupBoxPlay";
             this.groupBoxPlay.Size = new System.Drawing.Size(220, 80);
-            this.groupBoxPlay.TabIndex = 5;
+            this.groupBoxPlay.TabIndex = 6;
             this.groupBoxPlay.TabStop = false;
             this.groupBoxPlay.Text = "4. Play the game";
             // 
@@ -175,7 +175,7 @@ partial class FormLauncher
             this.buttonStop.Location = new System.Drawing.Point(120, 30);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
-            this.buttonStop.TabIndex = 2;
+            this.buttonStop.TabIndex = 1;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.ButtonStop_Click);
@@ -185,7 +185,7 @@ partial class FormLauncher
             this.buttonPlay.Location = new System.Drawing.Point(20, 30);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(75, 23);
-            this.buttonPlay.TabIndex = 1;
+            this.buttonPlay.TabIndex = 0;
             this.buttonPlay.Text = "Play";
             this.buttonPlay.UseVisualStyleBackColor = true;
             this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
@@ -196,7 +196,7 @@ partial class FormLauncher
             this.groupBoxAccounts.Location = new System.Drawing.Point(70, 20);
             this.groupBoxAccounts.Name = "groupBoxAccounts";
             this.groupBoxAccounts.Size = new System.Drawing.Size(120, 70);
-            this.groupBoxAccounts.TabIndex = 6;
+            this.groupBoxAccounts.TabIndex = 0;
             this.groupBoxAccounts.TabStop = false;
             this.groupBoxAccounts.Text = "Accounts";
             // 
@@ -216,7 +216,7 @@ partial class FormLauncher
             this.groupBoxInfo.Location = new System.Drawing.Point(360, 20);
             this.groupBoxInfo.Name = "groupBoxInfo";
             this.groupBoxInfo.Size = new System.Drawing.Size(120, 70);
-            this.groupBoxInfo.TabIndex = 7;
+            this.groupBoxInfo.TabIndex = 2;
             this.groupBoxInfo.TabStop = false;
             this.groupBoxInfo.Text = "Info";
             // 
@@ -236,7 +236,7 @@ partial class FormLauncher
             this.groupBoxWorldVersions.Location = new System.Drawing.Point(210, 20);
             this.groupBoxWorldVersions.Name = "groupBoxWorldVersions";
             this.groupBoxWorldVersions.Size = new System.Drawing.Size(120, 70);
-            this.groupBoxWorldVersions.TabIndex = 4;
+            this.groupBoxWorldVersions.TabIndex = 1;
             this.groupBoxWorldVersions.TabStop = false;
             this.groupBoxWorldVersions.Text = "World versions";
             // 
@@ -245,7 +245,7 @@ partial class FormLauncher
             this.buttonWorldVersions.Location = new System.Drawing.Point(20, 30);
             this.buttonWorldVersions.Name = "buttonWorldVersions";
             this.buttonWorldVersions.Size = new System.Drawing.Size(75, 25);
-            this.buttonWorldVersions.TabIndex = 1;
+            this.buttonWorldVersions.TabIndex = 0;
             this.buttonWorldVersions.Text = "View";
             this.buttonWorldVersions.UseVisualStyleBackColor = true;
             this.buttonWorldVersions.Click += new System.EventHandler(this.buttonWorldVersions_Click);
@@ -282,7 +282,7 @@ partial class FormLauncher
             this.groupBoxServerStatus.Location = new System.Drawing.Point(330, 420);
             this.groupBoxServerStatus.Name = "groupBoxServerStatus";
             this.groupBoxServerStatus.Size = new System.Drawing.Size(220, 160);
-            this.groupBoxServerStatus.TabIndex = 9;
+            this.groupBoxServerStatus.TabIndex = 7;
             this.groupBoxServerStatus.TabStop = false;
             this.groupBoxServerStatus.Text = "Server status";
             // 
@@ -303,7 +303,7 @@ partial class FormLauncher
             this.labelWowWorldServerStatus.Location = new System.Drawing.Point(120, 70);
             this.labelWowWorldServerStatus.Name = "labelWowWorldServerStatus";
             this.labelWowWorldServerStatus.Size = new System.Drawing.Size(51, 15);
-            this.labelWowWorldServerStatus.TabIndex = 4;
+            this.labelWowWorldServerStatus.TabIndex = 3;
             this.labelWowWorldServerStatus.Text = "Stopped";
             // 
             // labelWowMetaServerStatus
@@ -313,7 +313,7 @@ partial class FormLauncher
             this.labelWowMetaServerStatus.Location = new System.Drawing.Point(120, 30);
             this.labelWowMetaServerStatus.Name = "labelWowMetaServerStatus";
             this.labelWowMetaServerStatus.Size = new System.Drawing.Size(51, 15);
-            this.labelWowMetaServerStatus.TabIndex = 3;
+            this.labelWowMetaServerStatus.TabIndex = 1;
             this.labelWowMetaServerStatus.Text = "Stopped";
             // 
             // labelKekWorldServer
@@ -322,7 +322,7 @@ partial class FormLauncher
             this.labelKekWorldServer.Location = new System.Drawing.Point(20, 110);
             this.labelKekWorldServer.Name = "labelKekWorldServer";
             this.labelKekWorldServer.Size = new System.Drawing.Size(62, 15);
-            this.labelKekWorldServer.TabIndex = 2;
+            this.labelKekWorldServer.TabIndex = 4;
             this.labelKekWorldServer.Text = "KeK World";
             // 
             // labelWowWorldServer
@@ -331,7 +331,7 @@ partial class FormLauncher
             this.labelWowWorldServer.Location = new System.Drawing.Point(20, 70);
             this.labelWowWorldServer.Name = "labelWowWorldServer";
             this.labelWowWorldServer.Size = new System.Drawing.Size(71, 15);
-            this.labelWowWorldServer.TabIndex = 1;
+            this.labelWowWorldServer.TabIndex = 2;
             this.labelWowWorldServer.Text = "WoW World";
             // 
             // labelWowMetaServer
