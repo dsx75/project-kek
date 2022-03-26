@@ -16,6 +16,17 @@ public partial class FormLauncher : Form
     {
         buttonPlay.Enabled = false;
         buttonStop.Enabled = true;
+
+        // TODO Check these periodically, or maybe some push system from servers?
+        labelWowMetaServerStatus.ForeColor = Color.Green;
+        labelWowMetaServerStatus.Text = "Running";
+
+        labelWowWorldServerStatus.ForeColor = Color.Green;
+        labelWowWorldServerStatus.Text = "Running";
+
+        //labelKekWorldServerStatus.ForeColor = Color.Green;
+        //labelKekWorldServerStatus.Text = "Running";
+
         WowMetaServer.Start(AddToLog);
         WowWorldServer.Start(AddToLog);
     }
@@ -24,8 +35,19 @@ public partial class FormLauncher : Form
     {
         buttonStop.Enabled = false;
         buttonPlay.Enabled = true;
-        WowMetaServer.Stop(AddToLog);
+
+        // TODO Check these periodically, or maybe some push system from servers?
+        labelWowMetaServerStatus.ForeColor = Color.Red;
+        labelWowMetaServerStatus.Text = "Stopped";
+
+        labelWowWorldServerStatus.ForeColor = Color.Red;
+        labelWowWorldServerStatus.Text = "Stopped";
+
+        //labelKekWorldServerStatus.ForeColor = Color.Red;
+        //labelKekWorldServerStatus.Text = "Stopped";
+
         WowWorldServer.Stop(AddToLog);
+        WowMetaServer.Stop(AddToLog);
     }
 
     private void buttonAbout_Click(object sender, EventArgs e)
