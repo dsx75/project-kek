@@ -3,9 +3,6 @@ using Common.Constants;
 using Common.Cryptography;
 using Common.Interfaces;
 using NLog;
-using TaidanaKage.Kek.Common;
-using TaidanaKage.Kek.Meta;
-using TaidanaKage.Kek.Meta.Clients;
 using WorldServer.Network;
 using WorldServer.Packets;
 
@@ -20,21 +17,6 @@ public static class Program
     public static void Main(string[] args)
     {
         Console.WriteLine("START");
-
-        // Only during testing (create a new meta database for each run)
-        InitializeMeta();
-
-        IMeta meta = MetaFactory.Meta;
-
-        // As the first thing in the Launcher player should select which client he wants to play
-        IClient? client = meta.ClientManager.GetClient(3);
-        if (client == null)
-        {
-            logger.Error("Client was not found.");
-            return;
-        }
-        logger.Info("Selected client: " + client.Version);
-
 
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = CultureInfo.DefaultThreadCurrentCulture = CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
@@ -76,25 +58,5 @@ public static class Program
         GC.WaitForPendingFinalizers();
 
         Console.WriteLine("END");
-    }
-
-    /// <summary>
-    /// For testing purposes
-    /// </summary>
-    private static void InitializeMeta()
-    {
-        // Let's delete Meta Folder to enforce Meta Database re-creation every times
-        if (Directory.Exists(Utils.MetaFolder))
-        {
-            Directory.Delete(Utils.MetaFolder, true);
-        }
-
-        IMeta meta = MetaFactory.Meta;
-
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W1\WoW.exe");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W2\WoW.exe");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
-        meta.ClientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
     }
 }

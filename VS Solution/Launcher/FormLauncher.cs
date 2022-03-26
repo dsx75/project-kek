@@ -1,3 +1,6 @@
+using TaidanaKage.Kek.Common;
+using TaidanaKage.Kek.Meta;
+using TaidanaKage.Kek.Meta.Clients;
 using TaidanaKage.Wow.Server.Meta.W1;
 using TaidanaKage.Wow.Server.World.W1;
 
@@ -5,11 +8,21 @@ namespace TaidanaKage.Kek;
 
 public partial class FormLauncher : Form
 {
+    private readonly IMeta _meta;
+
     public FormLauncher()
     {
         InitializeComponent();
+
         buttonPlay.Enabled = true;
         buttonStop.Enabled = false;
+
+        // Only during testing (create a new meta database for each run)
+        //DeleteMetaFolder();
+
+        _meta = MetaFactory.Meta;
+
+        ReloadClients();
     }
 
     private void buttonPlay_Click(object sender, EventArgs e)
@@ -62,7 +75,14 @@ public partial class FormLauncher : Form
 
     private void buttonManageClients_Click(object sender, EventArgs e)
     {
+        // TODO temporary hack
+        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W1\WoW.exe");
+        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W2\WoW.exe");
+        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
+        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
+        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
 
+        ReloadClients();
     }
 
     private void buttonManageAccounts_Click(object sender, EventArgs e)
@@ -107,5 +127,31 @@ public partial class FormLauncher : Form
     private void AddToLog(string message)
     {
         textBoxLog.Text += message + Environment.NewLine;
+    }
+
+    /// <summary>
+    /// For testing purposes
+    /// </summary>
+    [Obsolete]
+    private void DeleteMetaFolder()
+    {
+        // Let's delete Meta Folder to enforce Meta Database re-creation every times
+        if (Directory.Exists(Utils.MetaFolder))
+        {
+            Directory.Delete(Utils.MetaFolder, true);
+        }
+    }
+
+    private void ReloadClients()
+    {
+        comboBoxClients.Items.Clear();
+        foreach (int idClient in _meta.ClientManager.Clients())
+        {
+            IClient? client = _meta.ClientManager.GetClient(idClient);
+            if (client != null)
+            {
+                comboBoxClients.Items.Add(client.ExeFile);
+            }
+        }
     }
 }

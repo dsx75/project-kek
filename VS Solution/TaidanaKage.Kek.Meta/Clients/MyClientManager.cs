@@ -7,13 +7,8 @@ internal class MyClientManager : IClientManager
 {
     private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-    private int _selectedClientId;
-    private IClient? _selectedClient;
-
     internal MyClientManager()
     {
-        _selectedClientId = 0;
-        _selectedClient = null;
     }
 
     public IClient AddClient(string exeFile)
@@ -57,24 +52,25 @@ internal class MyClientManager : IClientManager
         return client;
     }
 
-    public int SelectedClientId
+    public List<int> Clients()
     {
-        get
-        {
-            return _selectedClientId;
-        }
-        set
-        {
-            _selectedClientId = value;
-            _selectedClient = null;
-        }
-    }
+        var command = MyMeta.Conn.CreateCommand();
+        command.CommandText =
+            @"
+            SELECT `id`
+            FROM `clients`
+            ORDER BY `id`
+            ";
 
-    public IClient? SelectedClient
-    {
-        get
+        List<int> clients = new();
+        using (var reader = command.ExecuteReader())
         {
-            return _selectedClient;
+            while (reader.Read())
+            {
+                int id = reader.GetInt32(reader.GetOrdinal("id"));
+                clients.Add(id);
+            }
         }
+        return clients;
     }
 }

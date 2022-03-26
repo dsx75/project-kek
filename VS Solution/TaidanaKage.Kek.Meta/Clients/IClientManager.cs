@@ -33,12 +33,10 @@ public interface IClientManager
     public IClient? GetClient(int id);
 
     /// <summary>
-    /// ID of the Client selected by Player, or <c>0</c> if Player hasn't selected one yet.
+    /// Gets list od IDs, one for each Client defined in the database.
+    /// <br/>
+    /// List is ordered by ID.
     /// </summary>
-    public int SelectedClientId { get; set; }
-
-    /// <summary>
-    /// The Client selected by Player, or <c>0</c> if Player hasn't selected one yet.
-    /// </summary>
-    public IClient SelectedClient { get; }
+    /// <returns>List of IDs.</returns>
+    public List<int> Clients();
 }
