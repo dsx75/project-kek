@@ -9,7 +9,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <StartupObject>TaidanaKage.Kek.Program</StartupObject>
-    <AssemblyName>TaidanaKage.Kek</AssemblyName>
+    <AssemblyName>Test</AssemblyName>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
