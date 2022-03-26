@@ -19,6 +19,14 @@ Supported clients:
 4. Cata
 5. MoP
 
+### Dependencies
+
+* [.NET 6.0][1]
+* [SQLite][2]
+* [Microsoft.Data.Sqlite][3]
+* [NLog][4]
+* [SuperSimpleTCP][5]
+* [Bouncy Castle][6]
 
 ### License
 
@@ -37,3 +45,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+
+[1]: https://dotnet.microsoft.com/ "A free, cross-platform, open source developer platform"
+[2]: https://www.sqlite.org/ "The best thing ever invented"
+[3]: https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/ "A lightweight ADO.NET provider for SQLite"
+[4]: https://nlog-project.org/ "A flexible and free logging platform"
+[5]: https://github.com/bcgit/bc-csharp "The Bouncy Castle crypto package for C#"
+[6]: https://github.com/jchristn/SuperSimpleTcp "Simple wrapper for TCP client and server in C# with SSL support"
