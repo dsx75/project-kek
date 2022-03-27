@@ -36,8 +36,13 @@ internal class MyMeta : IMeta
 
         _databaseFile = Path.Combine(_folder, Constants.MetaDatabaseFileName);
 
-        if (!File.Exists(_databaseFile))
+        bool isThisTheFirstRun = !File.Exists(_databaseFile);
+        if (isThisTheFirstRun)
         {
+            // Let's create a brand new Meta Database, including the complete structure (tables, keys).
+            // Plus some harcoded data:
+            // - list of World Versions
+            // - an empty row for Selected
             new MetaDatabaseGenerator(_databaseFile).Run();
         }
 
@@ -50,6 +55,29 @@ internal class MyMeta : IMeta
         _clientManager = new MyClientManager();
         _rulesetManager = new MyRulesetManager();
         _worldManager = new MyWorldManager();
+
+        if (isThisTheFirstRun)
+        {
+            // Let's insert some default data into the new empty Meta Database
+
+            // Default accounts
+            _accountManager.AddAccount("admin", "admin", true);
+            _accountManager.AddAccount("player", "player", false);
+
+            // Default Rulesets
+            _rulesetManager.AddRuleset(WorldVersion.W1, "Default W1", @"F:\WoW\KeK\Rulesets\W1");
+            _rulesetManager.AddRuleset(WorldVersion.W2, "Default W2", @"F:\WoW\KeK\Rulesets\W2");
+            _rulesetManager.AddRuleset(WorldVersion.W3, "Default W3", @"F:\WoW\KeK\Rulesets\W3");
+            _rulesetManager.AddRuleset(WorldVersion.W4, "Default W4", @"F:\WoW\KeK\Rulesets\W4");
+            _rulesetManager.AddRuleset(WorldVersion.W5, "Default W5", @"F:\WoW\KeK\Rulesets\W5");
+
+            // TODO temporary hack
+            _clientManager.AddClient(@"F:\WoW\Clients\W1\WoW.exe");
+            _clientManager.AddClient(@"F:\WoW\Clients\W2\WoW.exe");
+            _clientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
+            _clientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
+            _clientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
+        }
     }
 
     public string Folder => _folder;

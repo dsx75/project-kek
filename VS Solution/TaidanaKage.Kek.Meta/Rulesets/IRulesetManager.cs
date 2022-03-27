@@ -26,7 +26,7 @@ public interface IRulesetManager
     public IRuleset? GetRuleset(int id);
 
     /// <summary>
-    /// Gets list of IDs of all Rulesets for the specified World Version..
+    /// Gets list of IDs of all Rulesets for the specified World Version.
     /// <br/>
     /// List is ordered by ID.
     /// </summary>

@@ -36,15 +36,12 @@ internal class MetaDatabaseGenerator
 
         // Accounts
         CreateTableAccounts();
-        InsertDefaultAdminAccount();
-        InsertDefaultPlayerAccount();
 
         // Clients
         CreateTableClients();
 
         // Rulesets
         CreateTableRulesets();
-        InsertDefaultRuleset();
 
         // Selected
         CreateTableSelected();
@@ -108,33 +105,10 @@ internal class MetaDatabaseGenerator
             `id` INTEGER PRIMARY KEY, 
             `name` TEXT NOT NULL,
             `password` TEXT NOT NULL,
-            `id_last_world` INTEGER,
+            `is_developer` INTEGER NOT NULL,
             UNIQUE(`name`)
-            FOREIGN KEY(`id_last_world`) REFERENCES `worlds`(`id`)
             );";
         Execute(sql);
-    }
-
-    private void InsertDefaultAdminAccount()
-    {
-        // TODO hardcode values
-        InsertAccount(1, "admin", "admin");
-    }
-
-    private void InsertDefaultPlayerAccount()
-    {
-        // TODO hardcode values
-        InsertAccount(2, "player", "player");
-    }
-
-    private void InsertAccount(int id, string name, string password)
-    {
-        var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `accounts`(`id`, `name`, `password`) VALUES ($Id, $Name, $Password)";
-        command.Parameters.AddWithValue("$Id", id);
-        command.Parameters.AddWithValue("$Name", name);
-        command.Parameters.AddWithValue("$Password", password);
-        command.ExecuteNonQuery();
     }
 
     private void CreateTableClients()
@@ -169,18 +143,6 @@ internal class MetaDatabaseGenerator
         Execute(sql);
     }
 
-    private void InsertDefaultRuleset()
-    {
-        var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `rulesets`(`id`, `id_world_version`, `name`) VALUES ($Id, $idWorldVersion, $Name, $Folder)";
-        // TODO hardcoded values
-        command.Parameters.AddWithValue("$Id", 1);
-        command.Parameters.AddWithValue("$IdWorldVersion", 1);
-        command.Parameters.AddWithValue("$Name", "Default");
-        command.Parameters.AddWithValue("$Folder", @"F:\WoW\KeK\Rulesets\W1");
-        command.ExecuteNonQuery();
-    }
-
     private void CreateTableSelected()
     {
         string sql = @"CREATE TABLE `selected`(
@@ -196,6 +158,7 @@ internal class MetaDatabaseGenerator
             );";
         Execute(sql);
     }
+
     private void InsertDefaultSelected()
     {
         var command = _conn.CreateCommand();

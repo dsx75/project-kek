@@ -18,7 +18,7 @@ public partial class FormLauncher : Form
         buttonStop.Enabled = false;
 
         // Only during testing (create a new meta database for each run)
-        //DeleteMetaFolder();
+        DeleteMetaFolder();
 
         _meta = MetaFactory.Meta;
 
@@ -75,14 +75,7 @@ public partial class FormLauncher : Form
 
     private void buttonManageClients_Click(object sender, EventArgs e)
     {
-        // TODO temporary hack
-        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W1\WoW.exe");
-        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W2\WoW.exe");
-        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
-        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
-        _meta.ClientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
-
-        ReloadClients();
+        //ReloadClients();
     }
 
     private void buttonManageAccounts_Click(object sender, EventArgs e)
