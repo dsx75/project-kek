@@ -31,7 +31,7 @@ internal class MyAcountManager : IAccountManager
         cmd.CommandText =
             @"
             INSERT INTO `accounts` (`name`, `password`, `is_developer`)
-            VALUES ($Id, $Name, $Password, $IsDeveloper)
+            VALUES ($Name, $Password, $IsDeveloper)
             ";
 
         cmd.Parameters.AddWithValue("$Name", name);

@@ -50,14 +50,14 @@ internal class RulesetGenerator
             INSERT INTO `rulesets`
             (`id_world_version`, `name`, `folder`) 
             VALUES 
-            (@IdWorldVersion, $Name, $Folder)
+            ($IdWorldVersion, $Name, $Folder)
             ";
 
         int idWorldVersion = (int)_worldVersion;
-        cmd.Parameters.AddWithValue("@IdWorldVersion", idWorldVersion);
+        cmd.Parameters.AddWithValue("$IdWorldVersion", idWorldVersion);
 
-        cmd.Parameters.AddWithValue("@Name", _name);
-        cmd.Parameters.AddWithValue("@Folder", _folder);
+        cmd.Parameters.AddWithValue("$Name", _name);
+        cmd.Parameters.AddWithValue("$Folder", _folder);
 
         cmd.ExecuteNonQuery();
 
