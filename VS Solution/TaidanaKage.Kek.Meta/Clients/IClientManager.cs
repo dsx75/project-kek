@@ -20,7 +20,7 @@ public interface IClientManager
     /// "C:\Program Files\World of Warcraft\WoW-64.exe"
     /// </example>
     /// </param>
-    /// <returns>Newly inserted Client.</returns>
+    /// <returns>Newly added Client.</returns>
     public IClient AddClient(string exeFile);
 
     /// <summary>
@@ -33,7 +33,7 @@ public interface IClientManager
     public IClient? GetClient(int id);
 
     /// <summary>
-    /// Gets list od IDs, one for each Client defined in the database.
+    /// Gets list of IDs, one for each Client defined in the database.
     /// <br/>
     /// List is ordered by ID.
     /// </summary>

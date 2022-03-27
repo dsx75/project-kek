@@ -1,26 +1,22 @@
-﻿using NLog;
+﻿using Microsoft.Data.Sqlite;
+using NLog;
 using TaidanaKage.Kek.Common;
 
 namespace TaidanaKage.Kek.Meta.Rulesets;
 
-internal class MyRuleset : IRuleset
+/// <summary>
+/// The whole purpose of this class is to add a new Ruleset into the Meta Database.
+/// </summary>
+internal class RulesetGenerator
 {
     private readonly Logger logger = LogManager.GetCurrentClassLogger();
 
-    private readonly int _id;
     private readonly WorldVersion _worldVersion;
     private readonly string _name;
     private readonly string _folder;
 
-    internal MyRuleset(int id, WorldVersion worldVersion, string name, string folder)
+    internal RulesetGenerator(WorldVersion worldVersion, string name, string folder)
     {
-        // Are these checks here necessary? Eh, whatever. Better be safe than sorry.
-        if (id < 1)
-        {
-            ArgumentOutOfRangeException ex = new(nameof(id), id, "Invalid Ruleset ID.");
-            logger.Error(ex);
-            throw (ex);
-        }
         if ((worldVersion == WorldVersion.Unknown) || (worldVersion == WorldVersion.Unsupported))
         {
             ArgumentException ex = new("Ruleset must have a valid World Version assigned.", nameof(worldVersion));
@@ -40,17 +36,34 @@ internal class MyRuleset : IRuleset
             throw (ex);
         }
 
-        _id = id;
         _worldVersion = worldVersion;
         _name = name;
         _folder = folder;
     }
 
-    public int Id => _id;
+    internal IRuleset Run()
+    {
+        SqliteCommand cmd = new();
+        cmd.Connection = MyMeta.Conn;
+        cmd.CommandText =
+            @"
+            INSERT INTO `rulesets`
+            (`id_world_version`, `name`, `folder`) 
+            VALUES 
+            (@IdWorldVersion, $Name, $Folder)
+            ";
 
-    public WorldVersion WorldVersion => _worldVersion;
+        int idWorldVersion = (int)_worldVersion;
+        cmd.Parameters.AddWithValue("@IdWorldVersion", idWorldVersion);
 
-    public string Name => _name;
+        cmd.Parameters.AddWithValue("@Name", _name);
+        cmd.Parameters.AddWithValue("@Folder", _folder);
 
-    public string Folder => _folder;
+        cmd.ExecuteNonQuery();
+
+        // Let's find the ID of newly added Ruleset
+        int id = MyMeta.GetLastInsertRowId();
+
+        return new MyRuleset(id, _worldVersion, _name, _folder);
+    }
 }

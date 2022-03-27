@@ -84,9 +84,9 @@ internal class MetaDatabaseGenerator
     private void InsertWorldVersion(int id, string name)
     {
         var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `world_versions`(`id`, `name`) VALUES ($id, $name)";
-        command.Parameters.AddWithValue("$id", id);
-        command.Parameters.AddWithValue("$name", name);
+        command.CommandText = @"INSERT INTO `world_versions`(`id`, `name`) VALUES ($Id, $Name)";
+        command.Parameters.AddWithValue("$Id", id);
+        command.Parameters.AddWithValue("$Name", name);
         command.ExecuteNonQuery();
     }
 
@@ -130,10 +130,10 @@ internal class MetaDatabaseGenerator
     private void InsertAccount(int id, string name, string password)
     {
         var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `accounts`(`id`, `name`, `password`) VALUES ($id, $name, $password)";
-        command.Parameters.AddWithValue("$id", id);
-        command.Parameters.AddWithValue("$name", name);
-        command.Parameters.AddWithValue("$password", password);
+        command.CommandText = @"INSERT INTO `accounts`(`id`, `name`, `password`) VALUES ($Id, $Name, $Password)";
+        command.Parameters.AddWithValue("$Id", id);
+        command.Parameters.AddWithValue("$Name", name);
+        command.Parameters.AddWithValue("$Password", password);
         command.ExecuteNonQuery();
     }
 
@@ -157,11 +157,14 @@ internal class MetaDatabaseGenerator
 
     private void CreateTableRulesets()
     {
-        // TODO add world version
+        // TODO Should folder be unique?
         string sql = @"CREATE TABLE `rulesets`(
             `id` INTEGER PRIMARY KEY, 
+            `id_world_version` INTEGER NOT NULL,
             `name` TEXT NOT NULL,
-            UNIQUE(`name`)
+            `folder` TEXT NOT NULL,
+            UNIQUE(`id_world_version`, `name`),
+            FOREIGN KEY(`id_world_version`) REFERENCES `world_versions`(`id`)
             );";
         Execute(sql);
     }
@@ -169,10 +172,12 @@ internal class MetaDatabaseGenerator
     private void InsertDefaultRuleset()
     {
         var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `rulesets`(`id`, `name`) VALUES ($id, $name)";
+        command.CommandText = @"INSERT INTO `rulesets`(`id`, `id_world_version`, `name`) VALUES ($Id, $idWorldVersion, $Name, $Folder)";
         // TODO hardcoded values
-        command.Parameters.AddWithValue("$id", 1);
-        command.Parameters.AddWithValue("$name", "Default");
+        command.Parameters.AddWithValue("$Id", 1);
+        command.Parameters.AddWithValue("$IdWorldVersion", 1);
+        command.Parameters.AddWithValue("$Name", "Default");
+        command.Parameters.AddWithValue("$Folder", @"F:\WoW\KeK\Rulesets\W1");
         command.ExecuteNonQuery();
     }
 
@@ -194,8 +199,8 @@ internal class MetaDatabaseGenerator
     private void InsertDefaultSelected()
     {
         var command = _conn.CreateCommand();
-        command.CommandText = @"INSERT INTO `selected`(`id`) VALUES ($id)";
-        command.Parameters.AddWithValue("$id", 1);
+        command.CommandText = @"INSERT INTO `selected`(`id`) VALUES ($Id)";
+        command.Parameters.AddWithValue("$Id", 1);
         command.ExecuteNonQuery();
     }
 }
