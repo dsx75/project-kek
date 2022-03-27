@@ -5,4 +5,6 @@ internal class MyRuleset : IRuleset
     internal MyRuleset()
     {
     }
+
+    public int Id => throw new NotImplementedException();
 }
