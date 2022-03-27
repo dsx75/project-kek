@@ -2,6 +2,8 @@
 
 Project KeK is an experimental tool for learning and testing purposes.
 
+Current status - pre-alpha prototype, pretty much nothing is functional yet.
+
 ### Limitations
 
 - no online functionality
