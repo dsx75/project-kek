@@ -77,6 +77,12 @@ internal class MyMeta : IMeta
             _clientManager.AddClient(@"F:\WoW\Clients\W3\WoW.exe");
             _clientManager.AddClient(@"F:\WoW\Clients\W4\WoW.exe");
             _clientManager.AddClient(@"F:\WoW\Clients\W5\Wow64.exe");
+
+            IRuleset? ruleset = _rulesetManager.GetRuleset(1);
+            if (ruleset != null)
+            {
+                _worldManager.AddWorld(ruleset, "Test world", @"D:\test_world.db");
+            }
         }
     }
 

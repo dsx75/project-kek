@@ -37,7 +37,7 @@ internal class MyWorldManager : IWorldManager
 
         cmd.Parameters.AddWithValue("$IdRuleset", ruleset.Id);
         cmd.Parameters.AddWithValue("$Name", name);
-        cmd.Parameters.AddWithValue("$file", file);
+        cmd.Parameters.AddWithValue("$File", file);
 
         cmd.ExecuteNonQuery();
 
