@@ -7,4 +7,10 @@ internal class MyWorld : IWorld
     }
 
     public int Id => throw new NotImplementedException();
+
+    public int RulesetId => throw new NotImplementedException();
+
+    public string Name => throw new NotImplementedException();
+
+    public string File => throw new NotImplementedException();
 }

@@ -12,5 +12,20 @@ public interface IWorld
     /// <br/>
     /// Allowed values: 1, 2, 3, ...
     /// </summary>
-    public int Id { get; }
+    int Id { get; }
+
+    /// <summary>
+    /// ID of the Ruleset used to create this World.
+    /// </summary>
+    int RulesetId { get; }
+
+    /// <summary>
+    /// Name of this World.
+    /// </summary>
+    string Name { get; }
+
+    /// <summary>
+    /// Full path to the file in which this World is stored.
+    /// </summary>
+    string File { get; }
 }
