@@ -91,10 +91,12 @@ internal class MetaDatabaseGenerator
     {
         string sql = @"CREATE TABLE `worlds`(
             `id` INTEGER PRIMARY KEY, 
+            `id_ruleset` INTEGER NOT NULL,
             `name` TEXT NOT NULL,
-            `id_world_version` INTEGER NOT NULL,
+            `file` TEXT NOT NULL,
             UNIQUE(`name`),
-            FOREIGN KEY(`id_world_version`) REFERENCES `world_versions`(`id`)
+            UNIQUE(`file`),
+            FOREIGN KEY(`id_ruleset`) REFERENCES `rulesets`(`id`)
             );";
         Execute(sql);
     }
